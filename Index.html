@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crpto Platform - Trade, Buy and Earn Crptocurrencies</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/yukita-sans" rel="stylesheet" />
+
+  <!-- RemixIcon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+
+
+  <!-- <link
+      href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic"
+      rel="stylesheet"
+    /> -->
+
+  <link rel="stylesheet" href="Global.css" />
+  <link rel="stylesheet" href="Styles.css" />
+  <link rel="stylesheet" href="Media.css" />
+</head>
+
+<body>
+  <header>
+    <main>
+      <nav>
+        <div class="logo">
+          <img src="Assets/Crypto-logo.svg" alt="Crypto Platform Logo" />
+          <h2>Crypto<span>Z</span></h2>
+        </div>
+
+        <button class="hamburger" aria-label="Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <div class="mobile-menu">
+          <!-- <div class="logo">
+              <img src="Assets/Crypto-logo.svg" alt="Crypto Platform Logo" />
+              <h2>Crypto<span>Z</span></h2>
+            </div> -->
+
+          <ul>
+            <li><a href="#">products</a></li>
+            <li><a href="#">price </a></li>
+            <li><a href="#">learn</a></li>
+            <li><a href="#">support</a></li>
+          </ul>
+
+          <div class="nav-btns">
+            <button class="btn btn1">sign in</button>
+            <button class="btn btn2">get started</button>
+          </div>
+        </div>
+      </nav>
+    </main>
+  </header>
+
+  <section class="hero">
+    <main>
+      <div class="hero-content">
+        <div class="hero-info">
+          <h1>
+            Your all-in-one platform to buy, sell, trade, and earn
+            Cryptocurrencies
+          </h1>
+          <p>
+            Open a free account in minutes right from your phone and make your
+            money go further
+          </p>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="email" id="email" name="email" placeholder=" " required />
+              <label for="email">Email Address
+                <!-- ... -->
+              </label>
+            </div>
+            <button type="submit" class="btn btn3">get started</button>
+          </div>
+        </div>
+        <div class="hero-app">
+          <img src="Assets/Coin/BitCoin/Cam2.png" alt="" class="coin converter_btc">
+          <img src="Assets/Coin/Ethereum/Cam1.png" alt="" class="coin converter_eth">
+          <div class="converter">
+            <div class="converter_head">
+              <h1 class="title">currency converter</h1>
+              <p class="subtitle">Convert between cryptocurrencies and traditional fiat currencies in real-time</p>
+            </div>
+
+            <!-- FROM -->
+            <div class="currency-dropdown" id="fromDropdownContainer">
+              <div class="row-label">From</div>
+
+              <div id="fromPill" class="pill" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0">
+                <div class="pill-left">
+                  <div id="fromFlag" class="flag-emoji">₿</div>
+                  <div class="code" id="fromCode">BTC</div>
+                </div>
+                <div class="pill-value" id="fromPillValue">$0.00</div>
+              </div>
+
+              <!-- Dropdown lives immediately under the pill, inside same parent -->
+              <div id="fromDropdownMenu" class="dropdown-menu" role="listbox" aria-label="From currencies">
+                <div class="search-box">
+                  <span class="search-icon">🔎</span>
+                  <input id="fromSearch" type="text" placeholder="Search currencies..."
+                    aria-label="Search from currencies">
+                </div>
+                <div id="fromCurrencyList" class="list"></div>
+              </div>
+            </div>
+
+            <!-- amount + switch + result -->
+            <div class="input-row">
+              <div class="input-field">
+                <label class="mini_label">Amount</label>
+                <input id="amountInput" type="number" min="0" step="any" value="1" aria-label="Amount to convert" />
+                <div class="hint">Enter amount in <span id="amountCurrencyLabel">BTC</span></div>
+              </div>
+
+              <button id="swapBtn" class="switch-btn" title="Swap currencies" aria-label="Swap currencies">
+                <i class="ri-arrow-up-down-line"></i>
+              </button>
+
+              <div class="result-field" aria-live="polite">
+                <div class="mini_label">Result</div>
+                <div class="result-value" id="resultValue">—</div>
+                <div class="hint" id="resultHint">Converted to <span id="resultCurrencyLabel">USD</span></div>
+              </div>
+            </div>
+
+            <!-- TO -->
+            <div class="currency-dropdown" id="toDropdownContainer">
+              <div class="row-label">To</div>
+
+              <div id="toPill" class="pill" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0">
+                <div class="pill-left">
+                  <div id="toFlag" class="flag-emoji">🇺🇸</div>
+                  <div class="code" id="toCode">USD</div>
+                </div>
+                <div class="pill-value" id="toPillValue">$1.0000</div>
+              </div>
+
+              <!-- Dropdown directly under the to-pill -->
+              <div id="toDropdownMenu" class="dropdown-menu" role="listbox" aria-label="To currencies">
+                <div class="search-box">
+                  <span class="search-icon">🔎</span>
+                  <input id="toSearch" type="text" placeholder="Search currencies..." aria-label="Search to currencies">
+                </div>
+                <div id="toCurrencyList" class="list"></div>
+              </div>
+            </div>
+
+            <!-- SUMMARY BLOCK (live: total, exchange rate, last updated) -->
+            <div class="summary-block" id="summaryBlock" aria-live="polite">
+              <div class="summary-main" id="summaryTotal">—</div>
+              <div class="summary-sub" id="summaryRate">Exchange Rate: —</div>
+              <div class="summary-small" id="summaryUpdated">Last updated: —</div>
+            </div>
+
+            <div style="font-size:12px;color:#fff; align-self: center; margin-block-start: 12px;">Data: Crypto by
+              CoinGecko • Fiat rates from ExchangeRate-API
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section>
+    <main>
+      <div class="brand-rating">
+        <div class="brand">
+          <img src="Assets/binance.svg" alt="" />
+          <img src="Assets/coinbase.svg" alt="" />
+          <img src="Assets/bitcoin.svg" alt="" />
+          <img src="Assets/tether.svg" alt="" />
+          <img src="Assets/bitmex.svg" alt="" />
+        </div>
+
+        <div class="rating">
+          <div class="rate">
+            <h1>99+</h1>
+            <span>People have joined</span>
+          </div>
+          <div class="rate">
+            <h1>50k</h1>
+            <span>VVIP users have joined</span>
+          </div>
+          <div class="rate">
+            <h1>100+</h1>
+            <span>Big Companies have joined</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section>
+    <main>
+      <div class="benefit">
+        <div class="benefit-content">
+          <h1>The Most Trusted Cryptocurrency Platform</h1>
+          <div class="list-container">
+            <div class="span-content">
+              <span>01</span>
+              <div class="content">
+                <h2>Sync between platforms</h2>
+                <p>
+                  No matter if you're using our web interface or mobile app —
+                  your data is always synced. Just one account for all our
+                  services.
+                </p>
+              </div>
+            </div>
+            <div class="span-content">
+              <span>02</span>
+              <div class="content">
+                <h2>More focus, less clutter</h2>
+                <p>No ads, just the crypto and content you love.</p>
+              </div>
+            </div>
+            <div class="span-content">
+              <span>03</span>
+              <div class="content">
+                <h2>Security by default</h2>
+                <p>
+                  Enable privacy mode and app locking to protect your data.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="benefit-imgs">
+          <div class="imgs-container">
+            <div class="slider-container left">
+              <div class="slider">
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black1.png" alt="" />
+                </div>
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black2.png" alt="" />
+                </div>
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black3.png" alt="" />
+                </div>
+                <!-- Duplicates -->
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black1.png" alt="" />
+                </div>
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black2.png" alt="" />
+                </div>
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black3.png" alt="" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Right slider (downwards) -->
+            <div class="slider-container right">
+              <div class="slider">
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black5.png" alt="" />
+                </div>
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black4.png" alt="" />
+                </div>
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black3.png" alt="" />
+                </div>
+                <!-- Duplicates -->
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black5.png" alt="" />
+                </div>
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black4.png" alt="" />
+                </div>
+                <div class="wrap">
+                  <img src="Assets/iphone-12--black3.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section class="features-services-section">
+    <main>
+      <div class="features-services">
+        <div class="features">
+          <div class="feature card1 row-span">
+            <div class="feature-img-container">
+              <img src="Assets/features1.svg" alt="" />
+            </div>
+            <h2>Create portfolio today</h2>
+            <p>
+              Buy and sell popular digital currencies, keep track of them in
+              the one place. Has a variety of features that make it the best
+              place to start trading.
+            </p>
+          </div>
+
+          <div class="feature card2 col-span">
+            <div class="feature-img-container">
+              <img src="Assets/features2.svg" alt="" />
+            </div>
+            <div class="col-span-content">
+              <h2>lightning-fast crypto trading</h2>
+              <p>
+                The Exchange supports USD, EUR, and GBP. Invest in
+                cryptocurrency slowly over time by scheduling buys daily,
+                weekly, or monthly.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature card3 col-span">
+            <div class="feature-img-container">
+              <img src="Assets/features3.svg" alt="" />
+            </div>
+            <div class="col-span-content">
+              <h2>security from day one</h2>
+              <p>
+                Safety, security and compliance. Buy and sell popular digital
+                currencies, keep track of them in one place.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="services">
+          <div class="services-head">
+            <h1>Get Started in Just Few Minute</h1>
+            <p>
+              Has a variety of features that make it the best place to start
+              trading.
+            </p>
+          </div>
+          <div class="services-content">
+            <div class="services-box">
+              <div class="services-box-img">
+                <img src="Assets/services1.svg" alt="" />
+              </div>
+              <div class="services-box-info">
+                <h3>Sign Up</h3>
+                <p>
+                  Buy Bitcoin or Ethereum, the securely store it in your
+                  wallet or send it on easily to friends.
+                </p>
+              </div>
+            </div>
+            <div class="services-box">
+              <div class="services-box-img">
+                <img src="Assets/services2.svg" alt="" />
+              </div>
+              <div class="services-box-info">
+                <h3>Fund</h3>
+                <p>
+                  Choose you preferred payment method such as bank transfer or
+                  credit card to top up your wallet.
+                </p>
+              </div>
+            </div>
+            <div class="services-box">
+              <div class="services-box-img">
+                <img src="Assets/services3.svg" alt="" />
+              </div>
+              <div class="services-box-info">
+                <h3>Buy Crypto</h3>
+                <p>
+                  Sign up for free wallet on web, IOS or Android and follow
+                  our easy process to set up your profile.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section class="testimonials-section">
+    <img src="Assets/Testimonial-section/testimonials-bg.png" alt="" class="bg" />
+    <main>
+      <h1>What people are saying</h1>
+      <div class="testimonials">
+        <div class="testimonials-grid">
+          <!-- Testimonial Item 1 -->
+          <div class="testimonial small">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp1.svg" alt="Olivia B." />
+                <div class="author">
+                  <span>Olivia B.</span>
+                  <p>Small Business Owner</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Finally, a platform that understands what users need in the
+                crypto world."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 2 -->
+          <div class="testimonial medium">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp2.svg" alt="Michael Chen" />
+                <div class="author">
+                  <span>Michael Chen</span>
+                  <p>Marketing Director</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Their platform transformed our digital presence completely.
+                The attention to detail and creative approach helped us double
+                our online engagement in just three months."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 3 -->
+          <div class="testimonial large">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp3.svg" alt="Emily Rodriguez" />
+                <div class="author">
+                  <span>Emily Rodriguez</span>
+                  <p>CEO, Tech Startup</p>
+                </div>
+              </div>
+              <p class="quote">
+                "As a long-time crypto enthusiast, I’ve tried many platforms.
+                This all-in-one platform stands out with its seamless
+                interface and robust tools to buy, sell, trade, and even earn
+                crypto effortlessly."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 4 -->
+          <div class="testimonial medium">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp7.svg" alt="Priya T. " />
+                <div class="author">
+                  <span>Priya T. </span>
+                  <p>Novice Investor</p>
+                </div>
+              </div>
+              <p class="quote">
+                "I was hesitant about jumping into cryptocurrency until I
+                discovered this platform. It guides you through every step,
+                making complex operations straightforward and accessible."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 5 -->
+          <div class="testimonial medium">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp5.svg" alt="Michael Chen" />
+                <div class="author">
+                  <span>Michael Chen</span>
+                  <p>Marketing Director</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Their team transformed our digital presence completely. The
+                attention to detail and creative approach helped us double our
+                online engagement in just three months."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 6 -->
+          <div class="testimonial large">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp6.svg" alt="Alex M." />
+                <div class="author">
+                  <span>Alex M.</span>
+                  <p>CEO, Tech Startup</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Working with this company has been a game-changer for our
+                organization. From initial strategy to final implementation,
+                every step was executed flawlessly. It feels great to have an
+                all-in-one platform that takes the complexity out of crypto
+                trading and earnings."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 7 -->
+          <div class="testimonial small">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp8.svg" alt="Victoria Nguyen" />
+                <div class="author">
+                  <span>Victoria Nguyen</span>
+                  <p>Financial Advisor</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Efficient, intuitive, and secure. This platform has
+                completely redefined cryptocurrency transactions for me."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 8 -->
+          <div class="testimonial medium">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp6.svg" alt="Carlos Mendez" />
+                <div class="author">
+                  <span>Carlos Mendez</span>
+                  <p>Blockchain Developer</p>
+                </div>
+              </div>
+              <p class="quote">
+                "I appreciate the intuitive design and lightning-fast
+                execution. Trading cryptocurrencies has never been smoother."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 9 -->
+          <div class="testimonial large">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp3.svg" alt="Tara J." />
+                <div class="author">
+                  <span>Tara J.</span>
+                  <p>Passive Income Seeker</p>
+                </div>
+              </div>
+              <p class="quote">
+                "This platform makes crypto trading fun and accessible. I am
+                constantly amazed at how intuitive the tools are, which helps
+                me experiment with different trading strategies without
+                feeling overwhelmed."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 10 -->
+          <div class="testimonial small">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp4.svg" alt="James Wilson" />
+                <div class="author">
+                  <span>James Wilson</span>
+                  <p>Freelancer</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Quick turnaround and professional results."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 11 -->
+          <div class="testimonial medium">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp5.svg" alt="Linda Martinez" />
+                <div class="author">
+                  <span>Linda Martinez</span>
+                  <p>Operations Manager</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Consistently delivers high-quality work. Their expertise in
+                cryptocurrency helped us streamline our operations
+                significantly."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 12 -->
+          <div class="testimonial large">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp7.svg" alt="Nathan Brooks" />
+                <div class="author">
+                  <span>Nathan Brooks</span>
+                  <p>Crypto Investor</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Innovation meets simplicity on this platform. Its all-in-one
+                solution provides everything I need to trade, manage, and grow
+                my crypto assets, making it indispensable to my daily
+                investment routine."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 13 -->
+          <div class="testimonial small">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp8.svg" alt="Sophia Kim" />
+                <div class="author">
+                  <span>Sophia Kim</span>
+                  <p>Market Strategist</p>
+                </div>
+              </div>
+              <p class="quote">
+                "The comprehensive tools and real-time data make it my go-to
+                platform for everything crypto-related."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 14 -->
+          <div class="testimonial medium">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp2.svg" alt="Derrick K." />
+                <div class="author">
+                  <span>Derrick K.</span>
+                  <p>Entrepreneur</p>
+                </div>
+              </div>
+              <p class="quote">
+                "I appreciate the platform's versatility. Whether I'm buying,
+                selling, or earning crypto rewards, everything is just a few
+                clicks away!"
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 15 -->
+          <div class="testimonial large">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp6.svg" alt="Marcus D." />
+                <div class="author">
+                  <span>Marcus D.</span>
+                  <p>Fintech Consultant</p>
+                </div>
+              </div>
+              <p class="quote">
+                "The level of security and transparency offered by this
+                platform is unmatched. I feel confident knowing that my assets
+                are managed with the latest technologies and best practices in
+                the industry."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 16 -->
+          <div class="testimonial small">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp8.svg" alt="Sandra Collins" />
+                <div class="author">
+                  <span>Sandra Collins</span>
+                  <p>Day Trader</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Earning rewards while managing my investments is a game
+                changer. This platform truly does it all."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 17 -->
+          <div class="testimonial medium">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp1.svg" alt="Rebecca Liu" />
+                <div class="author">
+                  <span>Rebecca Liu</span>
+                  <p>Investor</p>
+                </div>
+              </div>
+              <p class="quote">
+                "The integration of buying, selling, trading, and earning
+                crypto in one platform has simplified my investment
+                decisions."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 18 -->
+          <div class="testimonial large">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp4.svg" alt="Robert Smith" />
+                <div class="author">
+                  <span>Robert Smith</span>
+                  <p>COO, Manufacturing Co.</p>
+                </div>
+              </div>
+              <p class="quote">
+                "The best decision we made was choosing this platform. Their
+                innovative solutions helped us overcome complex challenges in
+                our supply chain management while maintaining excellent
+                communication throughout the project."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 19 -->
+          <div class="testimonial small">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp4.svg" alt="Daniel Harris" />
+                <div class="author">
+                  <span>Daniel Harris</span>
+                  <p>Crypto Enthusiastr</p>
+                </div>
+              </div>
+              <p class="quote">
+                "This platform makes managing my crypto portfolio effortless.
+                Fast, secure, and reliable!"
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 20 -->
+          <div class="testimonial small">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp2.svg" alt="David Miller" />
+                <div class="author">
+                  <span>David Miller</span>
+                  <p>Project Manager</p>
+                </div>
+              </div>
+              <p class="quote">
+                "Reliable and professional service. Helped us optimize our
+                workflow efficiently."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 21 -->
+          <div class="testimonial small">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp6.svg" alt="Marcus Lee" />
+                <div class="author">
+                  <span>Marcus Lee</span>
+                  <p>Crypto Trader</p>
+                </div>
+              </div>
+              <p class="quote">
+                "The platform's seamless interface makes buying and trading
+                cryptocurrencies simple and efficient."
+              </p>
+            </div>
+          </div>
+          <!-- Testimonial Item 22 -->
+          <div class="testimonial small">
+            <div class="testimony">
+              <div class="profile">
+                <img src="Assets/Testimonial-section/dp8.svg" alt="Jessica Brown" />
+                <div class="author">
+                  <span>Jessica Brown</span>
+                  <p>Graphic Designer</p>
+                </div>
+              </div>
+              <p class="quote">"Impressive attention to detail!"</p>
+            </div>
+          </div>
+          <!-- Alternating loop -->
+          <!-- Contemplating on adding more not to make the html bulky -->
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section class="cta">
+    <main>
+      <img src="Assets/CTA-Section/btc.svg" alt="" class="btc" />
+      <img src="Assets/CTA-Section/eth.svg" alt="" class="eth" />
+      <img src="Assets/CTA-Section/luna.svg" alt="" class="luna" />
+      <div class="cta-container">
+        <div class="circle-fill min-fill"></div>
+        <div class="circle-fill max-fill"></div>
+        <div class="circle-outline min-outline"></div>
+        <div class="circle-outline max-outline"></div>
+        <img src="Assets/CTA-Section/dots.svg" alt="" class="dots" />
+        <div class="cta-content">
+          <h1>Take your first step into safe, secure crypto investing</h1>
+          <a href="#"><button class="btn btn4">get started</button></a>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <footer>
+    <main>
+      <div class="footer-container">
+        <img src="Assets/circles.svg" alt="" class="bg" />
+        <div class="top-footer">
+          <div class="company">
+            <h3>company</h3>
+            <div class="company-contents">
+              <a href="#">about</a>
+              <a href="#">blog</a>
+              <a href="#">career</a>
+              <a href="#">student</a>
+              <a href="#">security</a>
+              <a href="#">trust and safety</a>
+              <a href="#">newsroom</a>
+              <a href="#">video</a>
+            </div>
+          </div>
+          <div class="company">
+            <h3>learn</h3>
+            <div class="company-contents">
+              <a href="#">What’s Trending</a>
+              <a href="#">Product News</a>
+              <a href="#">Events</a>
+              <a href="#">University</a>
+              <a href="#">Research</a>
+              <a href="#">Market Updates</a>
+            </div>
+          </div>
+          <div class="company">
+            <h3>product</h3>
+            <div class="company-contents">
+              <a href="#">Stock & Fund</a>
+              <a href="#">Cash Card</a>
+              <a href="#">Crypto</a>
+              <a href="#">Options</a>
+              <a href="#">Gold</a>
+              <a href="#">Learn Snacks</a>
+            </div>
+          </div>
+          <div class="company">
+            <h3>support</h3>
+            <div class="company-contents">
+              <a href="#">Support Center</a>
+              <a href="#">Contact Us</a>
+              <a href="#">System Status</a>
+              <a href="#">Areas of Availability</a>
+            </div>
+          </div>
+          <div class="company">
+            <h3>resources</h3>
+            <div class="company-contents">
+              <a href="#">Prices</a>
+              <a href="#">Site Widgets</a>
+              <a href="#">Tax</a>
+              <a href="#">Support</a>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="bottom-footer">
+          <h2>Did you know you can do more with crypto while on the go?</h2>
+          <div class="logo">
+            <img src="Assets/Crypto-logo-white.svg" alt="Crypto Platform Logo" />
+            <h2>CryptoZ</h2>
+          </div>
+          <span>Coded by
+            <a href="https://github.com/MuktharAyo" target="_blank">MuktharAyo</a>
+            | All Rights Reserved</span>
+        </div>
+      </div>
+    </main>
+  </footer>
+
+  <script src="Script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: rgb(38, 80, 232);
+  --main-color-variant: rgb(64, 110, 236);
+  --bg-gradient: linear-gradient(42deg, rgb(39, 82, 231), rgb(11, 34, 113));
+  --other-clr: rgb(0, 0, 0);
+  --other-clr-two: rgb(85, 85, 85);
+  --other-bg: rgb(232, 250, 254);
+  --other-bg-one: rgb(245, 245, 245);
+  --other-bg-two: rgb(208, 219, 255);
+  --other-bg-three: rgb(243, 222, 149);
+  --other-bg-four: rgb(243, 149, 217);
+  --other-bg-five: rgb(255, 248, 238);
+
+  --primary-color: rgb(255, 255, 255);
+  /* --secondary-color: rgb(212, 212, 212); */
+  --secondary-color: rgb(169, 169, 169);
+  --primary-dark-color: rgb(44, 49, 49);
+  --secondary-dark-color: rgb(5, 14, 44);
+
+  --brd: 1px solid rgb(227, 227, 227);
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("Assets/Fonts/Nohemi/Nohemi-SemiBold-BF6438cc57db2ff.woff") format("woff"),
+    url("Assets/Fonts/Nohemi/Nohemi-SemiBold-BF6438cc588a48a.ttf") format("ttf"),
+    url("Assets/Fonts/Nohemi/Nohemi-SemiBold-BF6438cc588b5e5.otf") format("otf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Yukita";
+  src: url("Assets/Fonts/Yukita/YukitaSans-ExtraBold-BF640fc93d02444.otf") format("otf");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Yukita";
+  src: url("Assets/Fonts/Yukita/YukitaSans-Bold-BF640fc93ceeda7.otf") format("otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Yukita";
+  src: url("Assets/Fonts/Yukita/YukitaSans-SemiBold-BF640fc93d7a0d3.otf") format("otf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Yukita";
+  src: url("Assets/Fonts/Yukita/YukitaSans-Light-BF640fc93d57932.otf") format("otf");
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  font-family: "Inter";
+  color: var(--other-clr);
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  /* overflow-x: hidden; */
+}
