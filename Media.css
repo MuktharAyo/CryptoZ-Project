@@ -681,6 +681,7 @@
 
   .top-footer {
     padding: 24px 16px;
+    gap: 24px;
   }
 
   .company-contents {
